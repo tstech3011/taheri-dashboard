@@ -1,4 +1,6 @@
+import Mainlayout from '@/components/MainLayout';
 import './globals.css';
+import MenuContextProvider from '@/context/MenuContext';
 
 export const metadata = {
   title: 'Dashboard',
@@ -8,7 +10,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className=''>{children}</body>
+      <body className='' suppressHydrationWarning={true}>
+        <MenuContextProvider>
+          <Mainlayout>{children}</Mainlayout>
+        </MenuContextProvider>
+      </body>
     </html>
   );
 }
